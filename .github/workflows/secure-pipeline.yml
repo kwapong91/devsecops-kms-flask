@@ -29,3 +29,8 @@ jobs:
           --ciphertext-blob fileb://encrypted_passwords \
           --output text \
           --query Plaintext | base64 --decode > .env
+          
+    - name: Run Flask App
+      run: |
+        pip install -r requirements.txt
+        python app.py
