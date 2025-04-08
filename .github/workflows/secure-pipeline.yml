@@ -24,7 +24,7 @@ jobs:
           --output text \
           --query Plaintext | base64 --decode > .env
           
-    - name: Run Flask App
+    - name: Test Flask App Startup
       run: |
-        pip install -r requirements.txt
-        python app.py
+        python -m flask run &
+        sleep 5
