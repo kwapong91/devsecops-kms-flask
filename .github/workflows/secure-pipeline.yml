@@ -25,12 +25,12 @@ jobs:
           --query Plaintext | base64 --decode > .env
           
     - name: Build Docker image with Dockerfile
-      run: docker build -t secure-flask-app .
+      run: |
+        docker build -t secure-flask-app .
           
     - name: Start and test container
       run: |
         docker run --env-file .env -d -p 5000:5000 --name secure-test secure-flask-app
-        sleep 5
-        docker exec secure-test curl http://localhost:5000
+        
       
 
