@@ -28,7 +28,7 @@ jobs:
       run: |
         docker build -t secure-flask-app .
           
-    - name: Start and test container
+    - name: Start container
       run: |
         docker run --env-file .env -d -p 5000:5000 --name secure-test secure-flask-app
         
