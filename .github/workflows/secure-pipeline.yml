@@ -31,6 +31,17 @@ jobs:
     - name: Start container
       run: |
         docker run --env-file .env -d -p 5000:5000 --name secure-test secure-flask-app
-        
+
+    - name: Run Trivy vulnerability scan
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: secure-flask-app
+        format: table
+        exit-code: 0
+        ignore-unfixed: true
+        vuln-type: os,library
+       
+            
+                
       
 
