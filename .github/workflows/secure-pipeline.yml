@@ -24,7 +24,6 @@ jobs:
           --output text \
           --query Plaintext | base64 --decode > .env
           
-    - name: Test Flask App Startup
-      run: |
-        python -m flask run &
-        sleep 5
+    - name: Start container
+      run: docker run --env-file .env -p 5000:5000 secure-flask-app
+
